@@ -67,21 +67,27 @@ To run a GitHub project, you'll need to follow these general steps:
 4.Build the project: Build the project using the build tool specified in the project's documentation.<br>
 
 
+## Features
+
+- Conversational interface for Kubernetes diagnostics  
+- Cluster health monitoring and analytics  
+- Assistance with issue identification and resolution  
+- Improved usability and observability of Kubernetes systems  
+- Support for debugging workflows and system insights  
 
 
+## Tech Stack
 
-
+- Kubernetes  
+- Python  
+- Container orchestration tools  
+- Virtual environments (for deployment/testing)  
 
 
 HOW TO DEPLOY KUBERNETES WITH KUDEADM AND CONTAINERD.
 
 Refer the link for the procedure.<br>
 https://thenewstack.io/how-to-deploy-kubernetes-with-kubeadm-and-containerd/
-
-
-        
-        
-        
         
 
 SCREENSHORT:
