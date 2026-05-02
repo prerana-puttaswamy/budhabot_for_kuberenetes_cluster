@@ -1,3 +1,7 @@
+## Contribution
+
+Contributed to Kubernetes diagnostics features, system design, and debugging workflows as part of a collaborative project.
+
 # BUDHA – bot for kubernetes usability diagnostics health and analytics 
 
 
