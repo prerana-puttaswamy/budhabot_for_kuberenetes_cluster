@@ -1,109 +1,156 @@
-## Contribution
+# BUDHA — Bot for Kubernetes Usability, Diagnostics, Health & Analytics
 
-Contributed to Kubernetes diagnostics features, system design, and debugging workflows as part of a collaborative project.
+> Built during Hewlett Packard Enterprise internship — Catch Them Young Program (2022–2023)  
+> Team project — group of 4 interns working under HPE engineering managers  
+> Built with Python, Kubernetes, Flask
 
-# BUDHA – bot for kubernetes usability diagnostics health and analytics 
+---
 
+## Background
 
+During the **Catch Them Young** internship program at **Hewlett Packard Enterprise (HPE)**, a team of 4 interns was assigned to build a real-world Kubernetes diagnostics tool under the guidance of HPE engineering managers.
 
-BUDHA aims to enhance the user experience of the Kubernetes platform by providing a conversational interface, assisting
-   in diagnostics and issue resolution, monitoring the platform's health, and offering valuable analytics and insights. By addressing 
-   these objectives, BUDHA contributes to improving the overall usability, performance, and effectiveness of Kubernetes deployments.
-<br>
+The goal was to address a genuine pain point in Kubernetes operations — routine cluster diagnostics require deep knowledge of kubectl commands and produce verbose, hard-to-parse output. BUDHA solves this by wrapping cluster operations in a conversational interface that any operator can use, regardless of Kubernetes expertise level.
 
+---
 
-REQUIREMENTS:
+## What Is BUDHA?
 
-To install VirtualBox and set up Ubuntu and Python in it, please follow the following steps:
+BUDHA (**B**ot for **K**ubernetes **U**sability, **D**iagnostics, **H**ealth & **A**nalytics) is a conversational assistant for Kubernetes cluster management. Instead of manually running kubectl commands, operators ask BUDHA natural language questions about cluster health, pod status, node performance, and system logs — and get structured, readable responses instantly.
 
-1.Download and install VirtualBox
+---
 
--Go to the VirtualBox website at https://www.virtualbox.org/ and download the appropriate version for your operating system.<br>
--Once downloaded, follow the installation wizard to install VirtualBox on your computer.<br>
+## My Contributions
 
-2.Download Ubuntu ISO file
+Working as part of the 4-person intern team under HPE engineering managers, my specific contributions included:
 
--Go to the Ubuntu website at https://ubuntu.com/download and download the appropriate version of Ubuntu ISO file.<br>
--Make sure to download the Desktop version of Ubuntu.<br>
+- Designed and implemented Kubernetes diagnostics features for querying pod status, node health, and cluster state
+- Contributed to system design of the diagnostics pipeline and conversational query mapping
+- Built debugging workflows for identifying and resolving common cluster issues (pod failures, node pressure, resource bottlenecks)
+- Integrated health check queries into the conversational interface, enabling natural language access to live cluster data
+- Collaborated on testing and validation against a real Kubernetes cluster deployed via kubeadm
 
-3.Create a new virtual machine in VirtualBox
-
--Open VirtualBox and click on the "New" button.
--Give your virtual machine a name, choose "Linux" as the type, and "Ubuntu (64-bit)" as the version.<br>
--Set the amount of memory you want to allocate to your virtual machine. The recommended amount is at least 2 GB.<br>
--Choose "Create a virtual hard disk now" and click "Create".<br>
-
-4.Install Ubuntu on the virtual machine
-
--Select the newly created virtual machine and click on "Start".<br>
--In the first screen, select the Ubuntu ISO file you downloaded earlier as the startup disk.<br>
--Follow the installation wizard to install Ubuntu on your virtual machine.<br>
-
-5.Install Python on Ubuntu
-
--Open a terminal window on your Ubuntu virtual machine.<br>
--Type the following command to update the package list:<br>
-        sudo apt-get update<br>
--Type the following command to install Python 3:<br>
-        sudo apt-get install python3<br>
--Verify that Python has been installed by typing the following command:<br>
-        python3 --version<br>
-        <br>
-        <br>
-        <br>
-        <br>
-       
-        
-PROCEDURE TO RUN THIS PROJECT:
- 
-To run a GitHub project, you'll need to follow these general steps:
-
-1.Clone the repository: Copy the GitHub repository URL and clone it using Git or download the repository as a ZIP file.
-
-2.Install dependencies: Check the project's documentation for any dependencies that need to be installed. Most projects have a README file that includes instructions on how to install and configure the dependencies.
-
-3.Set up environment variables: Some projects require environment variables to be set up. Check the project's documentation for any required environment variables and set them up in your environment.
-
-4.Build the project: Build the project using the build tool specified in the project's documentation.<br>
-
+---
 
 ## Features
 
-- Conversational interface for Kubernetes diagnostics  
-- Cluster health monitoring and analytics  
-- Assistance with issue identification and resolution  
-- Improved usability and observability of Kubernetes systems  
-- Support for debugging workflows and system insights  
+- **Conversational interface** — query your cluster in plain English, no kubectl knowledge required
+- **Cluster health monitoring** — pod status, node availability, CPU/memory pressure
+- **Diagnostics assistance** — identify failing pods, unhealthy nodes, and resource bottlenecks
+- **Analytics and insights** — cluster-level summaries and usage patterns
+- **Debugging workflows** — guided resolution steps for common Kubernetes issues
+- **Log querying** — fetch and filter recent pod logs via natural language
 
+---
+
+## How It Works
+
+```
+User types natural language query
+          ↓
+BUDHA parses intent and maps to kubectl operation
+          ↓
+Fetches live data from Kubernetes cluster via API
+          ↓
+Returns structured, readable response to user
+```
+
+**Example interactions:**
+
+```
+User:  "Which pods are failing?"
+BUDHA: Lists pods in CrashLoopBackOff or Error state with namespace and age
+
+User:  "What's the health of my nodes?"
+BUDHA: Reports node Ready/NotReady status, CPU pressure, memory pressure
+
+User:  "Show me recent errors in the default namespace"
+BUDHA: Returns recent pod logs filtered by error level
+
+User:  "How many pods are running?"
+BUDHA: Returns pod count by status across all namespaces
+```
+
+---
 
 ## Tech Stack
 
-- Kubernetes  
-- Python  
-- Container orchestration tools  
-- Virtual environments (for deployment/testing)  
+| Layer | Technology |
+|---|---|
+| Backend | Python, Flask |
+| Kubernetes Integration | kubectl, Kubernetes Python client |
+| Conversational Interface | Python intent parsing |
+| Cluster Setup | kubeadm + containerd |
+| Environment | VirtualBox + Ubuntu (local Kubernetes cluster) |
 
+---
 
-HOW TO DEPLOY KUBERNETES WITH KUDEADM AND CONTAINERD.
+## Setting Up Locally
 
-Refer the link for the procedure.<br>
-https://thenewstack.io/how-to-deploy-kubernetes-with-kubeadm-and-containerd/
-        
+**Prerequisites:** VirtualBox, Ubuntu, Python 3, kubectl configured
 
-SCREENSHORT:
+```bash
+# 1. Clone the repo
+git clone https://github.com/prerana-puttaswamy/budhabot_for_kuberenetes_cluster.git
+cd budhabot_for_kuberenetes_cluster/budhabot
 
-![11](https://github.com/priyaanca/budhabot_for_linuxcommand_healthchecks/assets/86156664/3781a353-88b4-4bcc-ab55-865a0a1d1b32)
+# 2. Install dependencies
+pip3 install -r requirements.txt
 
+# 3. Verify kubectl is configured and pointing to your cluster
+kubectl cluster-info
 
-this is the screenshot of basic commands of linux.<br>
+# 4. Run the bot
+python3 app.py
+```
 
+**Setting up a local Kubernetes cluster with kubeadm and containerd:**  
+Refer to: [How to Deploy Kubernetes with kubeadm and containerd](https://thenewstack.io/how-to-deploy-kubernetes-with-kubeadm-and-containerd/)
 
-![22](https://github.com/priyaanca/budhabot_for_linuxcommand_healthchecks/assets/86156664/ae6de01a-1f4e-4112-a9e6-f4a864e279a2)
-this is the screenshot of the linux health checks.<br>
+---
 
+## Project Structure
 
-![33](https://github.com/priyaanca/budhabot_for_linuxcommand_healthchecks/assets/86156664/eab805df-a978-4521-97ea-bafcdf3b10e7)
-this is the screenshot of the kuberenetes commands.<br>
+```
+budhabot_for_kuberenetes_cluster/
+├── budhabot/
+│   ├── app.py              # Main application entry point
+│   ├── diagnostics.py      # Kubernetes diagnostics queries
+│   ├── health.py           # Cluster health monitoring
+│   ├── analytics.py        # Usage analytics and insights
+│   └── requirements.txt
+└── README.md
+```
 
+---
 
+## Evolution: From BUDHA to KubeGPT
 
+BUDHA was an early exploration of Kubernetes conversational interfaces built during the HPE internship. The experience of diagnosing real cluster issues during this project directly inspired [KubeGPT Dashboard](https://github.com/prerana-puttaswamy/kubegpt-dashboard) — a more advanced independent project that adds:
+
+| Feature | BUDHA | KubeGPT |
+|---|---|---|
+| Interface | Conversational text | Web dashboard |
+| Analysis | Rule-based queries | Hybrid: rules + LLM fallback |
+| AI | None | Ollama (local LLM) |
+| Output | Text responses | Structured incident reports |
+| Deployment | Local Python | Docker Compose |
+
+The progression from BUDHA → KubeGPT shows a natural evolution from team exploration to production-grade solo implementation.
+
+---
+
+## Program Context
+
+**Catch Them Young** is an HPE initiative that recruits early-career engineers and assigns them to real engineering projects under the mentorship of senior HPE managers. Teams work on production-relevant problems with the same tools and standards used by HPE engineering teams.
+
+---
+
+## Author
+
+**Prerana Puttaswamy** (Contributor)  
+Software Engineering Intern, Hewlett Packard Enterprise (2022–2023)  
+MS Computer Science, California State University, Long Beach  
+[GitHub](https://github.com/prerana-puttaswamy) | [LinkedIn](https://www.linkedin.com/in/prerana-puttaswamy-a07836224/) | [Portfolio](https://preranap.vercel.app)
+
+> Original repository: [priyaanca/budhabot_for_kuberenetes_cluster](https://github.com/priyaanca/budhabot_for_kuberenetes_cluster)
